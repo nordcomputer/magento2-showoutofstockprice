@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\ConfigurableProduct\Pricing\Render\FinalPriceBox" type="Nordcomputer\Showoutofstockprice\Pricing\Render\FinalPriceBox" />
+    <type name="Magento\ConfigurableProduct\Model\ResourceModel\Product\LinkedProductSelectBuilder">
+    <arguments>
+        <argument name="baseSelectProcessor" xsi:type="object">Nordcomputer\Showoutofstockprice\Model\ConfigurableProduct\ResourceModel\Product\StockStatusBaseSelectProcessor</argument>
+    </arguments>
+    </type>
+</config>
