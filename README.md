@@ -8,4 +8,4 @@ Install with composer from terminal:
 
 
 # Note
-If you would like to show options/swatches even if all children are out of stock you need to make a template change, you need to remove the $product->isSalable() checks from the Magento_Catalog::product/view/form.phtml template
+If you would like to show options/swatches even if all children are out of stock you need to make a template change, you need to remove the `$product->isSalable()` checks from the `Magento_Catalog::product/view/form.phtml` template
