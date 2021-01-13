@@ -5,3 +5,7 @@ Install with composer from terminal:
 `composer config repositories.nordcomputer/showoutofstockprice git "git@github.com:nordcomputer/magento2-showoutofstockprice.git"`
 
 `composer require nordcomputer/showoutofstockprice <prefered version>`
+
+
+# Note
+If you would like to show options/swatches even if all children are out of stock you need to make a template change, you need to remove the $product->isSalable() checks from the Magento_Catalog::product/view/form.phtml template
