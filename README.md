@@ -7,5 +7,8 @@ Install with composer from terminal:
 `composer require nordcomputer/showoutofstockprice <prefered version>`
 
 
+# Configuration
+You can now configure, if you want to show swatches and the add-to-cart button on the product page from the backend (`Stores -> Configuration -> Nordcomputer -> Show Price for out-of-stock products`)
+
 # Note
-If you would like to show options/swatches even if all children are out of stock you need to make a template change, you need to remove the `$product->isSalable()` checks from the `Magento_Catalog::product/view/form.phtml` template
+If you have no swatches configured (for example by using Dropdown instead), the Dropdown wont show up. But the Add-to-cart button still works
