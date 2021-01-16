@@ -1,0 +1,11 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Nordcomputer_Showoutofstockprice" translate="title" title="Nordcomputer" sortOrder="50">
+                    <resource id="Nordcomputer_Showoutofstockprice::main" translate="title" title="Show out of Stock price" sortOrder="50"/>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>
