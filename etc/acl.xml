@@ -2,7 +2,7 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Nordcomputer_Showoutofstockprice" translate="title" title="Nordcomputer" sortOrder="50">
+                <resource id="Nordcomputer_Showoutofstockprice::nordcomputer_showoutofstockprice" translate="title" title="Nordcomputer" sortOrder="50">
                     <resource id="Nordcomputer_Showoutofstockprice::main" translate="title" title="Show out of Stock price" sortOrder="50"/>
                 </resource>
             </resource>
