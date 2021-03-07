@@ -12,3 +12,7 @@ You can now configure, if you want to show swatches and the add-to-cart button o
 
 # Note
 If you have no swatches configured (for example by using Dropdown instead), the Dropdown wont show up. But the Add-to-cart button still works
+
+# Contributers
+Thank you to our contributers:
+- [@carlos-reynosa](https://www.github.com/carlos-reynosa)

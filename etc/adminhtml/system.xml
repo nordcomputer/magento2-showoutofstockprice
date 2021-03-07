@@ -12,10 +12,15 @@
             <resource>Nordcomputer_Showoutofstockprice::main</resource>
             <group id="general" translate="label tooltip comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>General Configuration</label>
+                <field id="show_swatches" translate="label tooltip comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Show swatches for out-of-stock proudcts on product page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+										<comment>Show swatches even if product isnt salable (if no swatches are defined, the Select-Field wont show up)</comment>
+                </field>
                 <field id="show_add_to_cart" translate="label tooltip comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Show Add to cart button on product page</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-										<comment>Show swatches and Add-to-cart button, even if product isnt salable (if no swatches are defined, the Select-Field wont show up)</comment>
+										<comment>Works only, if 'Show Swatches' is set to 'Yes'. Show Add-to-cart button, even if product isnt salable (if no swatches are defined, the Select-Field wont show up)</comment>
                 </field>
             </group>
         </section>
