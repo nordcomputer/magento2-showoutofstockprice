@@ -20,7 +20,10 @@
                 <field id="show_add_to_cart" translate="label tooltip comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Show Add to cart button on product page</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-										<comment>Works only, if 'Show Swatches' is set to 'Yes'. Show Add-to-cart button, even if product isnt salable (if no swatches are defined, the Select-Field wont show up)</comment>
+					<comment>Works only, if 'Show Swatches' is set to 'Yes'. Show Add-to-cart button, even if product isnt salable (if no swatches are defined, the Select-Field wont show up)</comment>
+                    <depends>
+                        <field id="show_swatches">1</field>
+                    </depends>
                 </field>
             </group>
         </section>
