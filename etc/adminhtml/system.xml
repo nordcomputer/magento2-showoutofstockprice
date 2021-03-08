@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="nordcomputer_showoutofstockprice" translate="label tooltip comment" sortOrder="11">
+        <tab id="nordcomputer_showoutofstockprice" translate="label tooltip comment" sortOrder="999999">
             <label>Nordcomputer</label>
         </tab>
         <section id="nordcomputer" translate="label tooltip comment" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
