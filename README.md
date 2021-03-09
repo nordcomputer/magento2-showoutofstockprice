@@ -14,4 +14,4 @@ If you have no swatches configured (for example by using Dropdown instead), the 
 
 ## Contributers
 Thank you to our contributers:
--	[@carlos-reynosa](https://www.github.com/carlos-reynosa)
+-   [@carlos-reynosa](https://www.github.com/carlos-reynosa)
