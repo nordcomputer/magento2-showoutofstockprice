@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="nordcomputer_showoutofstockprice" translate="label tooltip comment" sortOrder="11">
+        <tab id="nordcomputer_showoutofstockprice" translate="label tooltip comment" sortOrder="999999">
             <label>Nordcomputer</label>
         </tab>
         <section id="nordcomputer" translate="label tooltip comment" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -10,17 +10,20 @@
 
             <tab>nordcomputer_showoutofstockprice</tab>
             <resource>Nordcomputer_Showoutofstockprice::main</resource>
-            <group id="general" translate="label tooltip comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <group id="general" translate="label tooltip comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General Configuration</label>
-                <field id="show_swatches" translate="label tooltip comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                <field id="show_swatches" translate="label tooltip comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Show swatches for out-of-stock proudcts on product page</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
 										<comment>Show swatches even if product isnt salable (if no swatches are defined, the Select-Field wont show up)</comment>
                 </field>
-                <field id="show_add_to_cart" translate="label tooltip comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                <field id="show_add_to_cart" translate="label tooltip comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Show Add to cart button on product page</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-										<comment>Works only, if 'Show Swatches' is set to 'Yes'. Show Add-to-cart button, even if product isnt salable (if no swatches are defined, the Select-Field wont show up)</comment>
+					<comment>Works only, if 'Show Swatches' is set to 'Yes'. Show Add-to-cart button, even if product isnt salable (if no swatches are defined, the Select-Field wont show up)</comment>
+                    <depends>
+                        <field id="show_swatches">1</field>
+                    </depends>
                 </field>
             </group>
         </section>
