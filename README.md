@@ -6,7 +6,6 @@ Install with composer from terminal:
 
 `composer require nordcomputer/showoutofstockprice <prefered version>`
 
-
 ## Configuration
 You can now configure, if you want to show swatches and the add-to-cart button on the product page from the backend (`Stores -> Configuration -> Nordcomputer -> Show Price for out-of-stock products`)
 
