@@ -1,7 +1,7 @@
 {
     "name": "nordcomputer/showoutofstockprice",
     "description": "Adds price to out-of-stock products",
-    "version": "v0.4",
+    "version": "v0.4.1",
     "require": {
         "php": "^7.1|^7.2|^7.3|^7.4"
     },
