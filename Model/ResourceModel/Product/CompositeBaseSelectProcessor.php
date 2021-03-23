@@ -9,19 +9,15 @@ class CompositeBaseSelectProcessor extends \Magento\Catalog\Model\ResourceModel\
         array $baseSelectProcessors
     ) {
 
-
         // REMOVE THE STOCK STATUS PROCESSOR
         //...................................
-        $finalProcessors = array();
+        $finalProcessors = [];
         foreach ($baseSelectProcessors as $baseSelectProcessor) {
-            if(!is_a($baseSelectProcessor, StockStatusBaseSelectProcessor::class)) {
+            if (!is_a($baseSelectProcessor, StockStatusBaseSelectProcessor::class)) {
                 $finalProcessors[] = $baseSelectProcessor;
             }
         }
 
         parent::__construct($finalProcessors);
     }
-
 }
-
-?>
