@@ -6,4 +6,7 @@
         <argument name="baseSelectProcessor" xsi:type="object">Nordcomputer\Showoutofstockprice\Model\ConfigurableProduct\ResourceModel\Product\StockStatusBaseSelectProcessorN</argument>
     </arguments>
     </type>
+    <type name="Magento\ConfigurableProduct\Pricing\Price\ConfigurablePriceResolver">
+      <plugin name="show_price" type="Nordcomputer\Showoutofstockprice\Plugin\ShowPrice" sortOrder="1" disabled="false" />
+    </type>
 </config>
