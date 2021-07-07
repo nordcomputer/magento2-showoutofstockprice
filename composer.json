@@ -1,10 +1,7 @@
 {
     "name": "nordcomputer/showoutofstockprice",
-    "description": "Adds price to out-of-stock products",
-    "version": "v0.4.2",
-    "require": {
-        "php": "^7.1|^7.2|^7.3|^7.4"
-    },
+    "description": "Adds price to out-of-stock products and shows Swatches for configurable out-of-stock products",
+    "version": "v0.5",
     "type": "magento2-module",
     "license": [
         "OSL-3.0",
