@@ -6,4 +6,19 @@
         <argument name="baseSelectProcessor" xsi:type="object">Nordcomputer\Showoutofstockprice\Model\ConfigurableProduct\ResourceModel\Product\StockStatusBaseSelectProcessorN</argument>
     </arguments>
     </type>
+    <type name="Magento\ConfigurableProduct\Pricing\Price\ConfigurablePriceResolver">
+      <plugin name="show_price" type="Nordcomputer\Showoutofstockprice\Plugin\ShowPrice" sortOrder="1" disabled="false" />
+    </type>
+    <preference for="Magento\ConfigurableProduct\Helper\Data"  type="Nordcomputer\Showoutofstockprice\ConfigurableProduct\Helper\Data\Data"/>
+
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+		<plugin name="ShowOutOfStockProducts" type="Nordcomputer\Showoutofstockprice\Plugin\ShowOutOfStockProductsPlugin" />
+	</type>
+
+    <type name="Magento\ConfigurableProduct\Model\ResourceModel\Attribute\OptionSelectBuilderInterface">
+        <plugin name="Magento_ConfigurableProduct_Plugin_Model_ResourceModel_Attribute_InStockOptionSelectBuilder" disabled="true" />
+        <plugin name="ShowAllProductSwatches" type="Nordcomputer\Showoutofstockprice\Plugin\InStockOptionSelectorPlugin"/>
+    </type>
+
+
 </config>

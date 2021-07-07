@@ -14,6 +14,8 @@
 ?>
 <?php $_product = $block->getProduct(); ?>
 
+
+
 <div class="product-add-form">
     <form data-product-sku="<?= $block->escapeHtmlAttr($_product->getSku()) ?>"
           action="<?= $block->escapeUrl($block->getSubmitUrl($_product)) ?>" method="post"
