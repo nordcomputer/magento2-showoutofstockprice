@@ -13,7 +13,7 @@
             <group id="general" translate="label tooltip comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General Configuration</label>
                 <field id="show_swatches" translate="label tooltip comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Show swatches for out-of-stock proudcts on product page</label>
+                    <label>Show swatches for out-of-stock prodcts on product page</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
 										<comment>Show swatches even if product isnt salable (if no swatches are defined, the Select-Field wont show up)</comment>
                 </field>
@@ -24,6 +24,32 @@
                     <depends>
                         <field id="show_swatches">1</field>
                     </depends>
+                </field>
+            </group>
+            <group id="category" translate="label tooltip comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Category Page</label>
+                <field id="show_swatches_category" translate="label tooltip comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show swatches even if all products are out-of-stock</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Show swatches even if all products are out-of-stock</comment>
+                </field>
+                <field id="show_add_to_cart_category" translate="label tooltip comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show add to cart button even if all products are out-of-stock</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Show add to cart button even if all products are out-of-stock</comment>
+                </field>
+            </group>
+            <group id="search" translate="label tooltip comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Search Results</label>
+                <field id="show_swatches_search" translate="label tooltip comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show swatches even if all products are out-of-stock</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Show swatches even if all products are out-of-stock</comment>
+                </field>
+                <field id="show_add_to_cart_search" translate="label tooltip comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show add to cart button even if all products are out-of-stock</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Show add to cart button even if all products are out-of-stock</comment>
                 </field>
             </group>
         </section>
