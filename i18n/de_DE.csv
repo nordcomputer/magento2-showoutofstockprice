@@ -1,5 +1,8 @@
+"General Configuration","Allgemeine Konfiguration"
 "Show Price for out-of-stock products","Preise für Out-of-stock Produkte"
 "Show Add to cart button on product page","In den Warenkorb Button auf Produktseite anzeigen"
 "Show swatches for out-of-stock proudcts on product page","Swatches für Produkte anzeigen, die nicht auf Lager sind"
 "Show swatches even if product isnt salable (if no swatches are defined, the Select-Field wont show up)","Zeigt Swatches an, auch wenn das Produkt nicht auf Lager ist. (Wenn keine Swatches definiert sind, wird KEIN Select Feld angezeigt)"
 "Works only, if 'Show Swatches' is set to 'Yes'. Show Add-to-cart button, even if product isnt salable (if no swatches are defined, the Select-Field wont show up)","'In den Warenkorb' Button anzeigen, wenn Produkte nicht auf Lager sind (funktioniert nur, wenn Swatches aktivert sind)."
+"Show swatches even if all products are out-of-stock","Swatches anzeigen, auch wenn kein Produkt auf Lager ist"
+"Show add to cart button even if all products are out-of-stock","In den Warenkorb Button anzeigen, auch wenn kein Produkt auf Lager ist"
