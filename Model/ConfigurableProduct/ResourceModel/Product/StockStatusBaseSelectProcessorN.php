@@ -6,6 +6,13 @@ use Magento\ConfigurableProduct\Model\ResourceModel\Product\StockStatusBaseSelec
 
 class StockStatusBaseSelectProcessorN extends StockStatusBaseSelectProcessor
 {
+    /**
+     * Methode process
+     *
+     * @param  Select $select
+     *
+     * @return void
+     */
     public function process(Select $select)
     {
         return $select;
