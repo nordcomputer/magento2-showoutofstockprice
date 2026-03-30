@@ -1,39 +1,70 @@
 <?php
-
 namespace Nordcomputer\Showoutofstockprice\Plugin;
 
+use Magento\Catalog\Model\Product;
+use Magento\Catalog\Model\Product\Attribute\Source\Status;
+use Magento\ConfigurableProduct\Block\Product\View\Type\Configurable;
+use Magento\ConfigurableProduct\Model\Product\Type\Configurable as ConfigurableType;
+
+/**
+ * Plugin to expose configurable child products even when they are out of stock.
+ */
 class ShowOutOfStockProductsPlugin
 {
-
     /**
-     * Get Allowed Products
+     * Return allowed child products for configurable product view.
      *
-     * @return \Magento\Catalog\Model\Product[]
+     * Uses the original result if available and filters only disabled products.
+     * Falls back to all used products when Magento returns an empty array.
+     *
+     * @param Configurable $subject
+     * @param callable $proceed
+     *
+     * @return Product[]
      */
-    public function beforeGetAllowProducts(\Magento\ConfigurableProduct\Block\Product\View\Type\Configurable $subject)
+    public function aroundGetAllowProducts(Configurable $subject, callable $proceed): array
     {
-        if (!$subject->hasAllowProducts()) {
-            $allProducts = $subject->getProduct()->getTypeInstance()->getUsedProducts($subject->getProduct(), null);
-            $products = [];
-            foreach ($allProducts as $product) {
-                if ($product->getStatus() != \Magento\Catalog\Model\Product\Attribute\Source\Status::STATUS_DISABLED) {
-                    $products[] = $product;
-                }
-            }
-            $subject->setAllowProducts($products);
-        } else {
-            $_children = $subject->getProduct()->getExtensionAttributes()->getConfigurableProductLinks();
-            if ($_children!=null) {
-                foreach ($_children as $child) {
-                    $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-                    $product = $objectManager->create(\Magento\Catalog\Model\Product::class)->load($child);
-                    $products[] = $product;
-                }
-                $subject->setAllowProducts($products);
-            }
+        $products = $proceed();
 
+        if (!empty($products)) {
+            return $this->filterEnabledProducts($products);
         }
 
-        return [];
+        $product = $subject->getProduct();
+        $typeInstance = $product->getTypeInstance();
+
+        if (!$typeInstance instanceof ConfigurableType) {
+            return [];
+        }
+
+        $usedProducts = $typeInstance->getUsedProducts($product, null);
+
+        return $this->filterEnabledProducts($usedProducts);
+    }
+
+    /**
+     * Filter disabled child products from the given product array.
+     *
+     * @param array $products
+     *
+     * @return Product[]
+     */
+    private function filterEnabledProducts(array $products): array
+    {
+        $filteredProducts = [];
+
+        foreach ($products as $product) {
+            if (!$product instanceof Product) {
+                continue;
+            }
+
+            if ((int) $product->getStatus() === Status::STATUS_DISABLED) {
+                continue;
+            }
+
+            $filteredProducts[] = $product;
+        }
+
+        return $filteredProducts;
     }
 }
