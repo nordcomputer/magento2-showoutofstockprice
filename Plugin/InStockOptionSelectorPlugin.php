@@ -2,45 +2,87 @@
 
 namespace Nordcomputer\Showoutofstockprice\Plugin;
 
-use Magento\CatalogInventory\Api\StockConfigurationInterface;
-use Magento\CatalogInventory\Model\ResourceModel\Stock\Status;
 use Magento\ConfigurableProduct\Model\ResourceModel\Attribute\OptionSelectBuilderInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\DB\Select;
-use \Magento\ConfigurableProduct\Plugin\Model\ResourceModel\Attribute\InStockOptionSelectBuilder;
+use Magento\Store\Model\ScopeInterface;
 
-class InStockOptionSelectorPlugin extends InStockOptionSelectBuilder
+/**
+ * Plugin to keep configurable options visible when out-of-stock products
+ * should be displayed on the storefront.
+ */
+class InStockOptionSelectorPlugin
 {
+    /** @var string */
+    private const XML_PATH_SHOW_OUT_OF_STOCK = 'cataloginventory/options/show_out_of_stock';
+
+    /** @var ScopeConfigInterface */
+    private $scopeConfig;
+
     /**
-     * @var StockConfigurationInterface
-     */
-    private $stockConfiguration;
-    /**
-     * InStockOptionSelectBuilder constructor
+     * InStockOptionSelectorPlugin constructor.
      *
-     * @param Status $stockStatusResource
-     * @param StockConfigurationInterface $stockConfiguration
+     * @param ScopeConfigInterface $scopeConfig
      */
     public function __construct(
-        Status $stockStatusResource,
-        StockConfigurationInterface $stockConfiguration
+        ScopeConfigInterface $scopeConfig
     ) {
-        parent::__construct($stockStatusResource, $stockConfiguration);
-        $this->stockConfiguration = $stockConfiguration;
+        $this->scopeConfig = $scopeConfig;
     }
+
     /**
-     * Only Add In stock Filter if Show Out Of Stock Products is set to No
+     * Remove the MSI salability filter
+     *
+     * Remove the MSI salability filter from the configurable option select
+     * when out-of-stock products should be shown.
      *
      * @param OptionSelectBuilderInterface $subject
      * @param Select $select
+     *
      * @return Select
      */
     public function afterGetSelect(
         OptionSelectBuilderInterface $subject,
         Select $select
-    ) {
-        if ($this->stockConfiguration->isShowOutOfStock()) {
-            return parent::afterGetSelect($subject, $select);
+    ): Select {
+        if (!$this->isShowOutOfStockEnabled()) {
+            return $select;
         }
+
+        $whereParts = $select->getPart(Select::WHERE);
+        if (empty($whereParts)) {
+            return $select;
+        }
+
+        $filteredWhereParts = [];
+
+        foreach ($whereParts as $wherePart) {
+            $normalizedWherePart = strtolower((string) $wherePart);
+
+            if (strpos($normalizedWherePart, 'stock.is_salable') !== false
+                && strpos($normalizedWherePart, '= 1') !== false
+            ) {
+                continue;
+            }
+
+            $filteredWhereParts[] = $wherePart;
+        }
+
+        $select->setPart(Select::WHERE, $filteredWhereParts);
+
         return $select;
+    }
+
+    /**
+     * Check whether out-of-stock products should be shown.
+     *
+     * @return bool
+     */
+    private function isShowOutOfStockEnabled(): bool
+    {
+        return $this->scopeConfig->isSetFlag(
+            self::XML_PATH_SHOW_OUT_OF_STOCK,
+            ScopeInterface::SCOPE_STORE
+        );
     }
 }

@@ -5,12 +5,14 @@ use Magento\CatalogInventory\Model\ResourceModel\Product\StockStatusBaseSelectPr
 
 class CompositeBaseSelectProcessor extends \Magento\Catalog\Model\ResourceModel\Product\CompositeBaseSelectProcessor
 {
+    /**
+     * REMOVE THE STOCK STATUS PROCESSOR
+     *
+     * @param  array $baseSelectProcessors
+     */
     public function __construct(
         array $baseSelectProcessors
     ) {
-
-        // REMOVE THE STOCK STATUS PROCESSOR
-        //...................................
         $finalProcessors = [];
         foreach ($baseSelectProcessors as $baseSelectProcessor) {
             if (!is_a($baseSelectProcessor, StockStatusBaseSelectProcessor::class)) {

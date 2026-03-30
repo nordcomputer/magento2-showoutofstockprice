@@ -1,14 +1,24 @@
 <?php
 namespace Nordcomputer\Showoutofstockprice\Pricing\Render;
 
+use Magento\ConfigurableProduct\Pricing\Render\FinalPriceBox as ConfigurableFinalPriceBox;
 use Magento\Framework\Pricing\Render\PriceBox as BasePriceBox;
+use Magento\Msrp\Pricing\Price\MsrpPrice;
 
-class FinalPriceBox extends \Magento\ConfigurableProduct\Pricing\Render\FinalPriceBox
+/**
+ * Custom final price box renderer for configurable products.
+ */
+class FinalPriceBox extends ConfigurableFinalPriceBox
 {
-    protected function _toHtml()
+    /**
+     * Render final price HTML.
+     *
+     * @return string
+     */
+    protected function _toHtml(): string
     {
         $result = BasePriceBox::_toHtml();
-        //Renders MSRP in case it is enabled
+
         if ($this->isMsrpPriceApplicable()) {
             /** @var BasePriceBox $msrpBlock */
             $msrpBlock = $this->rendererPool->createPriceRender(
@@ -19,6 +29,7 @@ class FinalPriceBox extends \Magento\ConfigurableProduct\Pricing\Render\FinalPri
                     'zone' => $this->getZone(),
                 ]
             );
+
             $result = $msrpBlock->toHtml();
         }
 
